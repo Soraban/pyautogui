@@ -16,7 +16,7 @@ with io.open("README.md", encoding="utf-8") as fileObj:
     long_description = fileObj.read()
 
 setup(
-    name='PyAutoGUI',
+    name='PyAutoGUI-Soraban',
     version=version,
     url='https://github.com/asweigart/pyautogui',
     author='Al Sweigart',
