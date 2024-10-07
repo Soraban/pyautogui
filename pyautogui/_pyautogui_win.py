@@ -286,7 +286,12 @@ def _keyDown(key):
         (mods & 1 or needsShift, 0x10)]: #HANKAKU not supported! mods & 8
         if apply_mod:
             ctypes.windll.user32.keybd_event(vk_mod, 0, KEYEVENTF_KEYDOWN, 0) #
-    ctypes.windll.user32.keybd_event(vkCode, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYDOWN, 0)
+    ctypes.windll.user32.keybd_event(
+        vkCode,
+        0,
+        KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYDOWN if pyautogui.isExtendedKey(key) else KEYEVENTF_KEYDOWN,
+        0
+    )
     for apply_mod, vk_mod in [(mods & 1 or needsShift, 0x10), (mods & 2, 0x11),
         (mods & 4, 0x12)]: #HANKAKU not supported! mods & 8
         if apply_mod:
@@ -326,7 +331,12 @@ def _keyUp(key):
         (mods & 1 or needsShift, 0x10)]: #HANKAKU not supported! mods & 8
         if apply_mod:
             ctypes.windll.user32.keybd_event(vk_mod, 0, 0, 0) #
-    ctypes.windll.user32.keybd_event(vkCode, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0)
+    ctypes.windll.user32.keybd_event(
+        vkCode,
+        0,
+        KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP if pyautogui.isExtendedKey(key) else KEYEVENTF_KEYUP,
+        0
+    )
     for apply_mod, vk_mod in [(mods & 1 or needsShift, 0x10), (mods & 2, 0x11),
         (mods & 4, 0x12)]: #HANKAKU not supported! mods & 8
         if apply_mod:
