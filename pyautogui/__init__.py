@@ -13,7 +13,7 @@
 from __future__ import absolute_import, division, print_function
 
 
-__version__ = "0.9.54"
+__version__ = "0.9.56"
 
 import collections
 import sys
@@ -522,6 +522,8 @@ SECONDARY = "secondary"
 QWERTY = r"""`1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?"""
 QWERTZ = r"""=1234567890/0qwertzuiop89-asdfghjkl,\yxcvbnm,.7+!@#$%^&*()?)QWERTZUIOP*(_ASDFGHJKL<|YXCVBNM<>&"""
 
+def isExtendedKey(key):
+    return key in ("pagedown", "pageup", "end", "home", "left", "up", "right", "down", "insert", "delete")
 
 def isShiftCharacter(character):
     """
